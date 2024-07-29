@@ -3,13 +3,11 @@ const Schema = mongoose.Schema;
 
 const studentFeedbackSchema = new Schema({
   from_username: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Student",
+    type: 'String',
     required: true,
   },
   to_username: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Volunteer",
+    type: 'String',
     required: true,
   },
   answer1: {
@@ -34,13 +32,11 @@ const studentFeedbackSchema = new Schema({
 
 const volunteerFeedbackSchema = new Schema({
   from_username: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Volunteer",
+    type: "String",
     required: true,
   },
   to_username: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Student",
+    type: "String",
     required: true,
   },
   answer1: {
@@ -65,13 +61,11 @@ const volunteerFeedbackSchema = new Schema({
 
 const coordinatorFeedbackSchema = new Schema({
   from_username: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Coordinator",
+    type: "String",
     required: true,
   },
   to_username: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Volunteer",
+    type: "String",
     required: true,
   },
   answer1: {

@@ -75,14 +75,16 @@ const saveCoordinatorFeedback = (req, res) => {
 
 const getFeedbacks = async (req, res) => {
   try {
-    const studentFeedbacks = await StudentFeedback.find().populate('from_username').populate('to_username');
-    const volunteerFeedbacks = await VolunteerFeedback.find().populate('from_username').populate('to_username');
-    const coordinatorFeedbacks = await CoordinatorFeedback.find().populate('from_username').populate('to_username');
+    const studentFeedbacks = await StudentFeedback.find();
+    const volunteerFeedbacks = await VolunteerFeedback.find();
+    const coordinatorFeedbacks = await CoordinatorFeedback.find();
     res.json({ studentFeedbacks, volunteerFeedbacks, coordinatorFeedbacks });
   } catch (error) {
     res.status(500).json({ message: 'Server Error', error });
   }
 };
+
+
 
 
 module.exports = {

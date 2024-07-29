@@ -18,24 +18,22 @@ const FeedbackTable = ({ feedbackType }) => {
     fetchFeedbacks();
   }, []);
 
-  // useEffect(() => {
-    // (async () => {
-      // const labels1 = await axios.post('http://localhost:5000/predict', { feedbacks: feedbacks?.map(feedback => feedback.answer3) });
-      // setLabels(labels.data);
-      // console.log(labels1.data);
-      // setLabels(labels);
-    // })();
-  // }, [feedbacks]);
+  useEffect(() => {
+    (async () => {
+      const labels1 = await axios.post('http://localhost:5000/predict', { feedbacks: feedbacks?.map(feedback => feedback.answer3) });
+      setLabels(labels1?.data?.labels);
+    })();
+  }, [feedbacks]);
 
   const renderTableRows = (feedbacks) => {
     return feedbacks.map((feedback, index) => (
       <tr key={feedback._id}>
-        <td>{feedback.from_username?.username || 'N/A'}</td>
-        <td>{feedback.to_username?.username || 'N/A'}</td>
+        <td>{feedback.from_username}</td>
+        <td>{feedback.to_username}</td>
         <td>{feedback.answer1}</td>
         <td>{feedback.answer2}</td>
         <td>{feedback.answer3}</td>
-        {/* <td>{labels[index] || 'N/A'}</td> */}
+        <td>{labels?.[index] || 'N/A'}</td>
       </tr>
     ));
   };
